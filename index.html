@@ -1,78 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A cute interactive question page." />
-
-  <title>Do You Love Me?</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you love me?</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <main class="page">
-    <!-- Question Screen -->
-    <section class="card" id="questionCard" aria-labelledby="questionTitle">
-      <div class="gif-wrapper">
-        <img
-          id="pandaGif"
-          src="assets/panda-asking.gif"
-          alt="Cute panda asking a question"
-        />
-      </div>
 
-      <h1 id="questionTitle">Do you love me?</h1>
+    <div class="container">
+        <div class="question-container">
+            <div class="gif-container">
+                <img src="https://media1.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif" alt="Cute Panda GIF" class="gif-result">
+            </div>
+            <h2>Do you love me?</h2>
+            <p class="subtitle">My heart has a secret question for you...</p>
+            
+            <div class="btn-group">
+                <button class="yes-btn">Yes!</button>
+                <button class="no-btn">No</button>
+            </div>
+        </div>
 
-      <p class="subtitle">
-        My heart has a secret question for you...
-      </p>
+        <div class="result-container" style="display: none;">
+            <div class="gif-container">
+                <img src="https://media4.giphy.com/media/2bUpP71bbVnZ3x7lgQ/giphy.gif" alt="Happy Panda GIF" class="gif-result">
+            </div>
+            <h2>I knew it! ❤️</h2>
+            <p class="subtitle">You just made my heart beat a million times faster!</p>
+        </div>
+    </div>
 
-      <div class="buttons">
-        <button class="btn btn-yes" id="yesBtn" type="button">
-          Yes! ❤️
-        </button>
-
-        <button class="btn btn-no" id="noBtn" type="button">
-          No
-        </button>
-      </div>
-    </section>
-
-    <!-- Success Screen -->
-    <section
-      class="card success-card"
-      id="successCard"
-      aria-labelledby="successTitle"
-      hidden
-    >
-      <div class="gif-wrapper">
-        <img
-          id="coupleGif"
-          src="assets/couple-hug.gif"
-          alt="Cute animated couple hugging"
-        />
-      </div>
-
-      <h1 id="successTitle">I knew it! ❤️</h1>
-
-      <p class="subtitle">
-        You just made my heart beat a million times faster!
-      </p>
-
-      <div class="heart-animation" aria-hidden="true">
-        ❤️ 💕 ❤️
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
