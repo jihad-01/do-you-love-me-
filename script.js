@@ -1,83 +1,55 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+const questionContainer = document.querySelector('.question-container');
+const resultContainer = document.querySelector('.result-container');
+const yesBtn = document.querySelector('.yes-btn');
+const noBtn = document.querySelector('.no-btn');
+const pandaGif = document.getElementById('panda-gif');
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #2b0917, #120308);
-    font-family: 'Quicksand', sans-serif;
-    color: #fff;
-    overflow: hidden;
-}
+// Ekhane shobgulo cute panda ebong love proposal-er GIF dewa holo
+const noGifs = [
+    "https://i.giphy.com/media/LNbc2cG6PKivrJsaIx/giphy.gif",
+    "https://i.giphy.com/media/3o7TKWpu2WCovaH0cw/giphy.gif",
+    "https://i.giphy.com/media/2bUpP71bbVnZ3x7lgQ/giphy.gif",
+    "https://i.giphy.com/media/adaOM3mG8b85vW7Xv2/giphy.gif",
+    "https://i.giphy.com/media/10UxkWwZ961WdO/giphy.gif",
+    "https://i.giphy.com/media/7efZHv4WfnRwk/giphy.gif"
+];
 
-.container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 400px;
-    width: 100%;
-}
+// "No" button-er text gulo
+const noTexts = [
+    "Are you sure?",
+    "Really sure?",
+    "Think again!",
+    "Last chance!",
+    "Surely not?",
+    "You might regret this!",
+    "Give it another thought!",
+    "Are you absolutely certain?"
+];
 
-.gif-container img {
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
+let clickCount = 0;
 
-h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: #ffb6c1;
-}
+noBtn.addEventListener('click', () => {
+    if (clickCount < noTexts.length) {
+        noBtn.textContent = noTexts[clickCount];
+        // Protibar click-e sundor panda GIF ashbe
+        pandaGif.src = noGifs[clickCount % noGifs.length];
+        clickCount++;
+        
+        // Yes button-ti kramonoye boro hote thakbe
+        let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+        yesBtn.style.fontSize = (currentSize + 2) + 'px';
+    } else {
+        const maxX = window.innerWidth - noBtn.offsetWidth - 50;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+        
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = Math.floor(Math.random() * maxX) + 'px';
+        noBtn.style.top = Math.floor(Math.random() * maxY) + 'px';
+    }
+});
 
-.subtitle {
-    font-size: 0.9rem;
-    color: #ddd;
-    margin-bottom: 1.5rem;
-}
-
-.btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    position: relative;
-}
-
-button {
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-}
-
-.yes-btn {
-    background-color: #ff4757;
-    color: white;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-}
-
-.yes-btn:hover {
-    background-color: #ff6b81;
-    transform: scale(1.05);
-}
-
-.no-btn {
-    background-color: #f1f2f6;
-    color: #2f3542;
-    position: relative;
-}
+// "Yes" dile romantic panda love GIF ebong success message ashbe
+yesBtn.addEventListener('click', () => {
+    questionContainer.style.display = 'none';
+    resultContainer.style.display = 'block';
+});
