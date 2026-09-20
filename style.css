@@ -1,105 +1,110 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100vw;
-    background: linear-gradient(135deg, #2b0917, #120308);
-    font-family: 'Quicksand', sans-serif;
-    color: #fff;
-    overflow: hidden;
-    transition: background 0.5s ease;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2b0917, #120308);
+  transition: background 0.8s ease;
+  overflow: hidden;
 }
 
-body.success-bg {
-    background: linear-gradient(135deg, #8b0000, #300101) !important; /* Deep red romantic background */
+/* Red Gradient Theme for Success State */
+body.success-theme {
+  background: linear-gradient(135deg, #8b0000, #300101);
 }
 
-.container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 400px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+/* Glassmorphism Card Container */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
-.gif-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 1rem;
+.content-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.gif-container img {
-    width: 160px;
-    height: 160px;
-    border-radius: 15px;
-    object-fit: cover;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.hidden {
+  display: none !important;
 }
 
-h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: #ffb6c1;
+img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .subtitle {
-    font-size: 0.9rem;
-    color: #ddd;
-    margin-bottom: 1.5rem;
+  color: #dddddd;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
 }
 
 .btn-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
-    width: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-button {
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
+.btn {
+  border: none;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.yes-btn {
-    background-color: #ff4757;
-    color: white;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-    z-index: 10;
+.btn-yes {
+  background-color: #ff3366;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+  z-index: 10;
 }
 
-.yes-btn:hover {
-    background-color: #ff6b81;
-    transform: scale(1.05);
+.btn-yes:hover {
+  background-color: #ff1a53;
+  box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
 }
 
-.no-btn {
-    background-color: #f1f2f6;
-    color: #2f3542;
-    position: relative;
-    z-index: 10;
+.btn-no {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+.btn-no:hover {
+  background-color: #cccccc;
+}
+
+.btn-no.absolute {
+  position: absolute;
+  transition: left 0.15s ease, top 0.15s ease;
 }
