@@ -3,39 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Do You Love Me? ❤️</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="A cute interactive question page." />
+
+  <title>Do You Love Me?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-
-  <div class="card" id="card">
-    <div id="question-container" class="content-step">
-      <img 
-        id="panda-gif" 
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1ZHdyM3Vwb2tyOGg1MWtwZ3pneDVvazlhYXlneTF2bWRjYnlqbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lq0h93752f6J9tijrh/giphy.gif" 
-        alt="Cute Asking Panda" 
-      />
-      <h1 class="title">Do you love me?</h1>
-      <p class="subtitle">My heart has a secret question for you...</p>
-
-      <div class="btn-group">
-        <button id="yes-btn" class="btn btn-yes">Yes!</button>
-        <button id="no-btn" class="btn btn-no">No</button>
+  <main class="page">
+    <!-- Question Screen -->
+    <section class="card" id="questionCard" aria-labelledby="questionTitle">
+      <div class="gif-wrapper">
+        <img
+          id="pandaGif"
+          src="assets/panda-asking.gif"
+          alt="Cute panda asking a question"
+        />
       </div>
-    </div>
 
-    <div id="success-container" class="content-step hidden">
-      <img 
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3YybXVtb2o1OHF2bjlxYnduZTV6dWtlZnI0czR1YmFqdDByaWtrZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/G3va31oEEnIkM/giphy.gif" 
-        alt="Anime Kiss" 
-      />
-      <h1 class="title">I knew it! ❤️</h1>
-      <p class="subtitle">You just made my heart beat a million times faster!</p>
-    </div>
-  </div>
+      <h1 id="questionTitle">Do you love me?</h1>
+
+      <p class="subtitle">
+        My heart has a secret question for you...
+      </p>
+
+      <div class="buttons">
+        <button class="btn btn-yes" id="yesBtn" type="button">
+          Yes! ❤️
+        </button>
+
+        <button class="btn btn-no" id="noBtn" type="button">
+          No
+        </button>
+      </div>
+    </section>
+
+    <!-- Success Screen -->
+    <section
+      class="card success-card"
+      id="successCard"
+      aria-labelledby="successTitle"
+      hidden
+    >
+      <div class="gif-wrapper">
+        <img
+          id="coupleGif"
+          src="assets/couple-hug.gif"
+          alt="Cute animated couple hugging"
+        />
+      </div>
+
+      <h1 id="successTitle">I knew it! ❤️</h1>
+
+      <p class="subtitle">
+        You just made my heart beat a million times faster!
+      </p>
+
+      <div class="heart-animation" aria-hidden="true">
+        ❤️ 💕 ❤️
+      </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
