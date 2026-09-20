@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do you love me?</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do You Love Me? ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div class="container">
-        <!-- Question Section -->
-        <div class="question-container">
-            <div class="gif-container">
-                <img id="panda-gif" src="https://i.ibb.co.com/4W2N3VJ/cute-panda.gif" alt="Cute Panda GIF" onerror="this.src='https://media.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif'">
-            </div>
-            <h2>Do you love me?</h2>
-            <p class="subtitle">My heart has a secret question for you...</p>
-            
-            <div class="btn-group">
-                <button class="yes-btn">Yes!</button>
-                <button class="no-btn">No</button>
-            </div>
-        </div>
+  <div class="card" id="card">
+    <div id="question-container" class="content-step">
+      <img 
+        id="panda-gif" 
+        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1ZHdyM3Vwb2tyOGg1MWtwZ3pneDVvazlhYXlneTF2bWRjYnlqbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lq0h93752f6J9tijrh/giphy.gif" 
+        alt="Cute Asking Panda" 
+      />
+      <h1 class="title">Do you love me?</h1>
+      <p class="subtitle">My heart has a secret question for you...</p>
 
-        <!-- Result Section (Hidden Initially) -->
-        <div class="result-container" style="display: none;">
-            <div class="gif-container">
-                <img src="https://i.ibb.co.com/84Z9Z9Z/anime-kiss.gif" alt="Cute Couple Kiss GIF" onerror="this.src='https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif'">
-            </div>
-            <h2>I knew it! ❤️</h2>
-            <p class="subtitle">You just made my heart beat a million times faster!</p>
-        </div>
+      <div class="btn-group">
+        <button id="yes-btn" class="btn btn-yes">Yes!</button>
+        <button id="no-btn" class="btn btn-no">No</button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="success-container" class="content-step hidden">
+      <img 
+        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3YybXVtb2o1OHF2bjlxYnduZTV6dWtlZnI0czR1YmFqdDByaWtrZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/G3va31oEEnIkM/giphy.gif" 
+        alt="Anime Kiss" 
+      />
+      <h1 class="title">I knew it! ❤️</h1>
+      <p class="subtitle">You just made my heart beat a million times faster!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
