@@ -1,370 +1,83 @@
-/* =========================
-   Base
-========================= */
-
-:root {
-  --pink: #ff4f81;
-  --pink-dark: #e62e68;
-  --white: #ffffff;
-  --text-soft: #f8dfe8;
-  --glass: rgba(255, 255, 255, 0.09);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --shadow: rgba(0, 0, 0, 0.35);
-
-  font-family: "Poppins", sans-serif;
-}
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  min-height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  overflow: hidden;
-
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255, 70, 130, 0.12), transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(255, 0, 80, 0.08), transparent 30%),
-    linear-gradient(135deg, #2b0917, #120308);
-
-  color: var(--white);
-
-  transition:
-    background 1.2s ease,
-    background-color 1.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2b0917, #120308);
+    font-family: 'Quicksand', sans-serif;
+    color: #fff;
+    overflow: hidden;
 }
 
-/* Success background */
-
-body.success-mode {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255, 90, 90, 0.15), transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.1), transparent 35%),
-    linear-gradient(135deg, #8b0000, #300101);
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 400px;
+    width: 100%;
 }
 
-/* =========================
-   Layout
-========================= */
-
-.page {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-
-  padding: 24px;
-  position: relative;
+.gif-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* =========================
-   Glass Card
-========================= */
-
-.card {
-  width: min(92vw, 500px);
-  padding: 42px 32px;
-
-  text-align: center;
-
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 28px;
-
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  box-shadow:
-    0 25px 70px var(--shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-
-  animation: cardEnter 0.8s ease both;
-}
-
-.card.hidden {
-  display: none;
-}
-
-.card.fade-out {
-  animation: cardExit 0.45s ease forwards;
-}
-
-/* =========================
-   GIF
-========================= */
-
-.gif-wrapper {
-  width: 220px;
-  height: 220px;
-
-  margin: 0 auto 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-  border-radius: 22px;
-}
-
-.gif-wrapper img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
-
-  animation: float 3s ease-in-out infinite;
-}
-
-/* =========================
-   Typography
-========================= */
-
-h1 {
-  font-size: clamp(2rem, 7vw, 3rem);
-  line-height: 1.15;
-  font-weight: 700;
-
-  margin-bottom: 12px;
-
-  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #ffb6c1;
 }
 
 .subtitle {
-  color: var(--text-soft);
-  font-size: 0.98rem;
-  line-height: 1.7;
-
-  max-width: 370px;
-  margin: 0 auto;
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
 }
 
-/* =========================
-   Buttons
-========================= */
-
-.buttons {
-  min-height: 100px;
-
-  margin-top: 30px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-
-  position: relative;
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
 }
 
-.btn {
-  border: none;
-  outline: none;
-
-  padding: 13px 28px;
-
-  border-radius: 999px;
-
-  font: inherit;
-  font-weight: 600;
-  font-size: 0.98rem;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+button {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.btn:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.7);
-  outline-offset: 4px;
+.yes-btn {
+    background-color: #ff4757;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
 }
 
-.btn-yes {
-  color: white;
-
-  background: linear-gradient(
-    135deg,
-    var(--pink),
-    var(--pink-dark)
-  );
-
-  box-shadow:
-    0 8px 25px rgba(255, 60, 120, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-
-  transform-origin: center;
+.yes-btn:hover {
+    background-color: #ff6b81;
+    transform: scale(1.05);
 }
 
-.btn-yes:hover {
-  box-shadow:
-    0 12px 32px rgba(255, 60, 120, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-
-  transform: translateY(-3px);
-}
-
-.btn-no {
-  color: #333;
-  background: #eeeeee;
-
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-}
-
-.btn-no:hover {
-  background: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* =========================
-   Escaping No Button
-========================= */
-
-.btn-no.escaping {
-  position: fixed;
-  z-index: 20;
-
-  transition:
-    left 0.35s ease,
-    top 0.35s ease,
-    transform 0.2s ease;
-}
-
-/* =========================
-   Success Screen
-========================= */
-
-.success-card {
-  animation: successEnter 0.9s ease both;
-}
-
-.success-card .gif-wrapper {
-  width: 250px;
-  height: 250px;
-}
-
-.heart-animation {
-  margin-top: 22px;
-
-  font-size: 1.8rem;
-  letter-spacing: 8px;
-
-  animation: heartbeat 1.2s ease-in-out infinite;
-}
-
-/* =========================
-   Animations
-========================= */
-
-@keyframes cardEnter {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes cardExit {
-  to {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-}
-
-@keyframes successEnter {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.92);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes heartbeat {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.15);
-  }
-
-  30% {
-    transform: scale(1);
-  }
-
-  45% {
-    transform: scale(1.12);
-  }
-}
-
-/* =========================
-   Mobile
-========================= */
-
-@media (max-width: 520px) {
-  .page {
-    padding: 16px;
-  }
-
-  .card {
-    padding: 32px 20px;
-    border-radius: 24px;
-  }
-
-  .gif-wrapper {
-    width: 180px;
-    height: 180px;
-  }
-
-  .success-card .gif-wrapper {
-    width: 200px;
-    height: 200px;
-  }
-
-  .buttons {
-    gap: 10px;
-  }
-
-  .btn {
-    padding: 12px 22px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+.no-btn {
+    background-color: #f1f2f6;
+    color: #2f3542;
+    position: relative;
 }
