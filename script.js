@@ -6,11 +6,11 @@ const pandaGif = document.getElementById('panda-gif');
 const body = document.body;
 
 const noGifs = [
-    "https://i.giphy.com/media/LNbc2cG6PKivrJsaIx/giphy.gif",
-    "https://i.giphy.com/media/3o7TKWpu2WCovaH0cw/giphy.gif",
-    "https://i.giphy.com/media/adaOM3mG8b85vW7Xv2/giphy.gif",
-    "https://i.giphy.com/media/10UxkWwZ961WdO/giphy.gif",
-    "https://i.giphy.com/media/7efZHv4WfnRwk/giphy.gif"
+    "https://media.giphy.com/media/3o7TKWpu2WCovaH0cw/giphy.gif",
+    "https://media.giphy.com/media/2bUpP71bbVnZ3x7lgQ/giphy.gif",
+    "https://media.giphy.com/media/adaOM3mG8b85vW7Xv2/giphy.gif",
+    "https://media.giphy.com/media/10UxkWwZ961WdO/giphy.gif",
+    "https://media.giphy.com/media/7efZHv4WfnRwk/giphy.gif"
 ];
 
 const noTexts = [
@@ -47,5 +47,5 @@ noBtn.addEventListener('click', () => {
 yesBtn.addEventListener('click', () => {
     questionContainer.style.display = 'none';
     resultContainer.style.display = 'block';
-    body.classList.add('success-bg'); // Deep red romantic background activate hobe
+    body.classList.add('success-bg');
 });
