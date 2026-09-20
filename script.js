@@ -1,14 +1,23 @@
-const yesBtn = document.getElementById("yes-btn");
-const noBtn = document.getElementById("no-btn");
-const pandaGif = document.getElementById("panda-gif");
-const questionContainer = document.getElementById("question-container");
-const successContainer = document.getElementById("success-container");
+"use strict";
 
-let noClickCount = 0;
-let yesScale = 1;
+/* =========================
+   Elements
+========================= */
 
-// Sequenced phrases for the "No" button
-const noPhrases = [
+const questionCard = document.getElementById("questionCard");
+const successCard = document.getElementById("successCard");
+
+const pandaGif = document.getElementById("pandaGif");
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+/* =========================
+   Configuration
+========================= */
+
+const noMessages = [
+  "No",
   "Are you sure?",
   "Really sure?",
   "Think again!",
@@ -16,64 +25,203 @@ const noPhrases = [
   "Surely not?",
   "You might regret this!",
   "Give it another thought!",
-  "Are you absolutely certain?",
-  "Have a heart!",
-  "Don't be so cold!",
-  "Change your mind?",
-  "Is that your final answer?"
+  "Pretty please? 🥺",
+  "Okay... but are you REALLY sure?"
 ];
 
-// Array of cartoon panda reaction GIFs
-const pandaGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJzeWhkcmVlZnR2YWNrdml2azR2eHdrbmkzdWp0ejBhNGdmdTFmdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BEob5qwRBUrcY/giphy.gif", // Sad
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndic2w1czBwcWVwMHpxbHgzOXR0cGpobWtlNDlzOHc1bjA5b2FhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ISOckXUybVfQ4/giphy.gif", // Pouting
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmNudHJqNHQ2eTYza3pzazd6ZjR1dmwzMXJ1dm9oNXhhNGgxeWs5ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d22A0yGf4OStA9I93a/giphy.gif", // Crying
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmkxbzI4dWQybXpzeTN5dnkyZWNsbzVxbTFndTVvYXZrODZ2ZmR1eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13A273yA61a4O4/giphy.gif", // Begging
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXp0dHN1MXh3OGc1cjAxaGRvdjl0aTB5MmdvZ2t2OTgxbTFsd3pxMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7sfDTEoSc8i2Y/giphy.gif"  // Heartbroken
+const pandaReactions = [
+  "assets/panda-asking.gif",
+  "assets/panda-confused.gif",
+  "assets/panda-sad.gif",
+  "assets/panda-shocked.gif",
+  "assets/panda-crying.gif",
+  "assets/panda-pleading.gif",
+  "assets/panda-surprised.gif",
+  "assets/panda-dramatic.gif",
+  "assets/panda-cute.gif",
+  "assets/panda-last-chance.gif"
 ];
 
-// Handles clicks on the "No" button
-noBtn.addEventListener("click", () => {
-  // 1. Update text
-  const phraseIndex = Math.min(noClickCount, noPhrases.length - 1);
-  noBtn.textContent = noPhrases[phraseIndex];
+/*
+ * Starting scale for the Yes button.
+ */
+const initialYesScale = 1;
 
-  // 2. Change GIF
-  const gifIndex = noClickCount % pandaGifs.length;
-  pandaGif.src = pandaGifs[gifIndex];
+/*
+ * Amount the Yes button grows after each No click.
+ */
+const yesGrowth = 0.12;
 
-  // 3. Grow the "Yes!" button
-  yesScale += 0.35;
-  yesBtn.style.transform = `scale(${yesScale})`;
+/*
+ * Number of No clicks before the button starts escaping.
+ */
+const escapeAfter = 4;
 
-  // 4. Make "No" button move randomly after 3 clicks
-  if (noClickCount >= 3) {
+/* =========================
+   State
+========================= */
+
+let noClicks = 0;
+let yesScale = initialYesScale;
+
+/* =========================
+   Yes Button
+========================= */
+
+yesBtn.addEventListener("click", showSuccess);
+
+/* =========================
+   No Button
+========================= */
+
+noBtn.addEventListener("click", handleNoClick);
+
+function handleNoClick() {
+  noClicks++;
+
+  updateNoMessage();
+  updatePanda();
+  growYesButton();
+
+  if (noClicks >= escapeAfter) {
     moveNoButton();
   }
+}
 
-  noClickCount++;
-});
+/* =========================
+   Change No Text
+========================= */
 
-// Teleports the "No" button randomly across the viewport
+function updateNoMessage() {
+  const messageIndex = Math.min(
+    noClicks,
+    noMessages.length - 1
+  );
+
+  noBtn.textContent = noMessages[messageIndex];
+}
+
+/* =========================
+   Change Panda GIF
+========================= */
+
+function updatePanda() {
+  const gifIndex = Math.min(
+    noClicks,
+    pandaReactions.length - 1
+  );
+
+  pandaGif.src = pandaReactions[gifIndex];
+
+  /*
+   * Force the browser to replay the GIF when the same
+   * file is selected again.
+   */
+  pandaGif.classList.remove("gif-refresh");
+
+  void pandaGif.offsetWidth;
+
+  pandaGif.classList.add("gif-refresh");
+}
+
+/* =========================
+   Grow Yes Button
+========================= */
+
+function growYesButton() {
+  yesScale += yesGrowth;
+
+  /*
+   * Prevent the button from becoming unreasonably large.
+   */
+  const maxScale = 2.2;
+  const finalScale = Math.min(yesScale, maxScale);
+
+  yesBtn.style.transform = `scale(${finalScale})`;
+
+  /*
+   * Increase its visual prominence as well.
+   */
+  yesBtn.style.zIndex = String(10 + noClicks);
+}
+
+/* =========================
+   Move No Button
+========================= */
+
 function moveNoButton() {
-  if (!noBtn.classList.contains("absolute")) {
-    noBtn.classList.add("absolute");
-  }
+  noBtn.classList.add("escaping");
 
-  const padding = 50;
-  const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
-  const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
+  const padding = 20;
 
-  const randomX = Math.max(padding, Math.floor(Math.random() * maxWidth));
-  const randomY = Math.max(padding, Math.floor(Math.random() * maxHeight));
+  const buttonWidth = noBtn.offsetWidth;
+  const buttonHeight = noBtn.offsetHeight;
+
+  const maxX = Math.max(
+    padding,
+    window.innerWidth - buttonWidth - padding
+  );
+
+  const maxY = Math.max(
+    padding,
+    window.innerHeight - buttonHeight - padding
+  );
+
+  const randomX =
+    Math.floor(Math.random() * (maxX - padding + 1)) + padding;
+
+  const randomY =
+    Math.floor(Math.random() * (maxY - padding + 1)) + padding;
 
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
 }
 
-// Handles clicking "Yes!"
-yesBtn.addEventListener("click", () => {
-  document.body.classList.add("success-theme");
-  questionContainer.classList.add("hidden");
-  successContainer.classList.remove("hidden");
+/* =========================
+   Keep Escaping Button
+   On-Screen After Resize
+========================= */
+
+window.addEventListener("resize", () => {
+  if (noBtn.classList.contains("escaping")) {
+    moveNoButton();
+  }
 });
+
+/* =========================
+   Success Screen
+========================= */
+
+function showSuccess() {
+  /*
+   * Remove the escaping state before switching screens.
+   */
+  noBtn.classList.remove("escaping");
+  noBtn.removeAttribute("style");
+
+  /*
+   * Fade out question card.
+   */
+  questionCard.classList.add("fade-out");
+
+  /*
+   * Change the background slightly before revealing
+   * the success screen.
+   */
+  document.body.classList.add("success-mode");
+
+  setTimeout(() => {
+    questionCard.hidden = true;
+
+    successCard.hidden = false;
+
+    /*
+     * Reset animation so it plays whenever success appears.
+     */
+    successCard.classList.remove("success-card");
+
+    void successCard.offsetWidth;
+
+    successCard.classList.add("success-card");
+  }, 450);
+}
