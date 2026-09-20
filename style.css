@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background: linear-gradient(135deg, #2b0917, #120308);
     font-family: 'Quicksand', sans-serif;
@@ -18,7 +18,7 @@ body {
 }
 
 body.success-bg {
-    background: linear-gradient(135deg, #8b0000, #300101); /* Deep red romantic background */
+    background: linear-gradient(135deg, #8b0000, #300101) !important; /* Deep red romantic background */
 }
 
 .container {
@@ -35,6 +35,7 @@ body.success-bg {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .gif-container {
@@ -42,6 +43,7 @@ body.success-bg {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .gif-container img {
@@ -49,7 +51,6 @@ body.success-bg {
     height: 160px;
     border-radius: 15px;
     object-fit: cover;
-    margin-bottom: 1rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -88,6 +89,7 @@ button {
     background-color: #ff4757;
     color: white;
     box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    z-index: 10;
 }
 
 .yes-btn:hover {
@@ -99,4 +101,5 @@ button {
     background-color: #f1f2f6;
     color: #2f3542;
     position: relative;
+    z-index: 10;
 }
